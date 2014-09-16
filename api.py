@@ -1,23 +1,27 @@
 import requests
 
 class USATodayArticles:
-    def __init__(self):
-        self.key = ''
-        self.section = ''
+    #def _init_(self):
+    #    self.key = ''
+    #    self.section = ''
 
-    def __init__(self, key):
-        self.key = key
-        self.section = ''
+    #def _init_(self, key):
+    #    self.key = key
+    #    self.section = ''
 
     def __init__(self, key, section):
-        self.key = key
+        test = requests.get('http://api.usatoday.com/open/articles/topnews?api_key=' + key)
+        if (test):
+            self.key = key
+        else:
+            self.key = ''
         if (section == 'home'):
             self.section = ''
         else:
             self.section = section
 
-    def setAPIKey(key):
-        test = requests.get('http://api.usatoday.com/open/articles/topnews?api_key=' + key)
+    def isKeyValid():
+        test = requests.get('http://api.usatoday.com/open/articles/topnews?     api_key=' + key)
         if (test):
             return True
         else:
