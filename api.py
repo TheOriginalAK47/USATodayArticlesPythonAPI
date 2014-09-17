@@ -1,12 +1,13 @@
 import requests
 
-class USATodayArticles:
+class ArticlesAPI:
     def __init__(self):
         self.count = 10
         self.days = 0
         self.page = 0
         self.reporter = ''
         self.tickers = False
+        self.section = ''
 
     def setKey(self, key):
         if (isKeyValid(key)):
@@ -15,7 +16,7 @@ class USATodayArticles:
         else:
             return False
 
-    def getArticles():
+    def getArticles(self):
         if not isKeyValid(self.key):
             return None
         requestURL = "http://api.usatoday.com/open/articles/topnews"
@@ -37,49 +38,49 @@ class USATodayArticles:
         print response.text
 
 
-    def setCount(num):
+    def setCount(self, num):
         self.count = num
 
-    def getCount():
+    def getCount(self):
         return self.count
 
-    def setDays(num):
+    def setDays(self, num):
         self.days = num
 
-    def getDays():
+    def getDays(self):
         return self.days
 
-    def setPage(page):
+    def setPage(self, page):
         self.page = page
 
-    def getPage():
+    def getPage(self):
         return self.page
 
-    def setReporter(reporter):
+    def setReporter(self, reporter):
         self.reporter = reporter
 
-    def getReporter():
+    def getReporter(self):
         return self.reporter
 
-    def tickersOn():
+    def tickersOn(self):
         self.tickers = True
 
-    def tickersOff():
+    def tickersOff(self):
         self.tickers = False
 
-    def tickersStatus():
+    def tickersStatus(self):
         return self.tickers
 
-    def setEncoding(encoding):
+    def setEncoding(self, encoding):
         self.encoding = encoding
 
-    def getEncoding():
+    def getEncoding(self):
         return self.encoding
 
 def isKeyValid(key):
-    print 'http://api.usatoday.com/open/articles/topnews?api_key=' + key
-    test = requests.get('http://api.usatoday.com/open/articles/topnews?     api_key=' + key)
-    print test
+    url = 'http://api.usatoday.com/open/articles/topnews?api_key=' + key
+    print url
+    test = requests.get(url)
     if (test):
         return True
     else:
